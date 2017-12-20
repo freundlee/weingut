@@ -2,10 +2,10 @@
 
 namespace Weingut\Http\Controllers\Auth;
 
-use Weingut\User;
-use Weingut\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Validator;
+use Weingut\Http\Controllers\Controller;
+use Weingut\Models\User;
 
 class RegisterController extends Controller
 {

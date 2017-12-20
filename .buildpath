@@ -17,62 +17,17 @@
 			<attribute name="composer" value="source"/>
 		</attributes>
 	</buildpathentry>
-	<buildpathentry kind="src" path="vendor/arrilot/laravel-widgets/src">
+	<buildpathentry kind="src" path="vendor/barryvdh/laravel-debugbar/src">
 		<attributes>
 			<attribute name="composer" value="vendor"/>
 		</attributes>
 	</buildpathentry>
-	<buildpathentry kind="src" path="vendor/composer/ca-bundle/src">
-		<attributes>
-			<attribute name="composer" value="vendor"/>
-		</attributes>
-	</buildpathentry>
-	<buildpathentry kind="src" path="vendor/composer/composer/src/Composer">
-		<attributes>
-			<attribute name="composer" value="vendor"/>
-		</attributes>
-	</buildpathentry>
-	<buildpathentry kind="src" path="vendor/composer/semver/src">
-		<attributes>
-			<attribute name="composer" value="vendor"/>
-		</attributes>
-	</buildpathentry>
-	<buildpathentry excluding="ca-bundle/|composer/|semver/|spdx-licenses/" kind="src" path="vendor/composer">
-		<attributes>
-			<attribute name="composer" value="vendor"/>
-		</attributes>
-	</buildpathentry>
-	<buildpathentry kind="src" path="vendor/composer/spdx-licenses/src">
+	<buildpathentry kind="src" path="vendor/composer">
 		<attributes>
 			<attribute name="composer" value="vendor"/>
 		</attributes>
 	</buildpathentry>
 	<buildpathentry kind="src" path="vendor/dnoegel/php-xdg-base-dir/src">
-		<attributes>
-			<attribute name="composer" value="vendor"/>
-		</attributes>
-	</buildpathentry>
-	<buildpathentry kind="src" path="vendor/doctrine/annotations/lib/Doctrine/Common/Annotations">
-		<attributes>
-			<attribute name="composer" value="vendor"/>
-		</attributes>
-	</buildpathentry>
-	<buildpathentry kind="src" path="vendor/doctrine/cache/lib/Doctrine/Common/Cache">
-		<attributes>
-			<attribute name="composer" value="vendor"/>
-		</attributes>
-	</buildpathentry>
-	<buildpathentry kind="src" path="vendor/doctrine/collections/lib">
-		<attributes>
-			<attribute name="composer" value="vendor"/>
-		</attributes>
-	</buildpathentry>
-	<buildpathentry kind="src" path="vendor/doctrine/common/lib/Doctrine/Common">
-		<attributes>
-			<attribute name="composer" value="vendor"/>
-		</attributes>
-	</buildpathentry>
-	<buildpathentry kind="src" path="vendor/doctrine/dbal/lib">
 		<attributes>
 			<attribute name="composer" value="vendor"/>
 		</attributes>
@@ -117,17 +72,7 @@
 			<attribute name="composer" value="vendor"/>
 		</attributes>
 	</buildpathentry>
-	<buildpathentry kind="src" path="vendor/guzzlehttp/psr7/src">
-		<attributes>
-			<attribute name="composer" value="vendor"/>
-		</attributes>
-	</buildpathentry>
 	<buildpathentry kind="src" path="vendor/hamcrest/hamcrest-php/hamcrest">
-		<attributes>
-			<attribute name="composer" value="vendor"/>
-		</attributes>
-	</buildpathentry>
-	<buildpathentry kind="src" path="vendor/intervention/image/src/Intervention/Image">
 		<attributes>
 			<attribute name="composer" value="vendor"/>
 		</attributes>
@@ -138,26 +83,6 @@
 		</attributes>
 	</buildpathentry>
 	<buildpathentry kind="src" path="vendor/jakub-onderka/php-console-highlighter/src">
-		<attributes>
-			<attribute name="composer" value="vendor"/>
-		</attributes>
-	</buildpathentry>
-	<buildpathentry kind="src" path="vendor/justinrainbow/json-schema/src/JsonSchema">
-		<attributes>
-			<attribute name="composer" value="vendor"/>
-		</attributes>
-	</buildpathentry>
-	<buildpathentry kind="src" path="vendor/larapack/doctrine-support/src">
-		<attributes>
-			<attribute name="composer" value="vendor"/>
-		</attributes>
-	</buildpathentry>
-	<buildpathentry kind="src" path="vendor/larapack/hooks/src">
-		<attributes>
-			<attribute name="composer" value="vendor"/>
-		</attributes>
-	</buildpathentry>
-	<buildpathentry kind="src" path="vendor/larapack/voyager-hooks/src">
 		<attributes>
 			<attribute name="composer" value="vendor"/>
 		</attributes>
@@ -183,6 +108,11 @@
 		</attributes>
 	</buildpathentry>
 	<buildpathentry kind="src" path="vendor/league/flysystem/src">
+		<attributes>
+			<attribute name="composer" value="vendor"/>
+		</attributes>
+	</buildpathentry>
+	<buildpathentry kind="src" path="vendor/maximebf/debugbar/src/DebugBar">
 		<attributes>
 			<attribute name="composer" value="vendor"/>
 		</attributes>
@@ -292,11 +222,6 @@
 			<attribute name="composer" value="vendor"/>
 		</attributes>
 	</buildpathentry>
-	<buildpathentry kind="src" path="vendor/psr/http-message/src">
-		<attributes>
-			<attribute name="composer" value="vendor"/>
-		</attributes>
-	</buildpathentry>
 	<buildpathentry kind="src" path="vendor/psr/log/Psr/Log">
 		<attributes>
 			<attribute name="composer" value="vendor"/>
@@ -372,21 +297,6 @@
 			<attribute name="composer" value="vendor"/>
 		</attributes>
 	</buildpathentry>
-	<buildpathentry kind="src" path="vendor/seld/cli-prompt/src">
-		<attributes>
-			<attribute name="composer" value="vendor"/>
-		</attributes>
-	</buildpathentry>
-	<buildpathentry kind="src" path="vendor/seld/jsonlint/src/Seld/JsonLint">
-		<attributes>
-			<attribute name="composer" value="vendor"/>
-		</attributes>
-	</buildpathentry>
-	<buildpathentry kind="src" path="vendor/seld/phar-utils/src">
-		<attributes>
-			<attribute name="composer" value="vendor"/>
-		</attributes>
-	</buildpathentry>
 	<buildpathentry kind="src" path="vendor/swiftmailer/swiftmailer/lib">
 		<attributes>
 			<attribute name="composer" value="vendor"/>
@@ -408,11 +318,6 @@
 		</attributes>
 	</buildpathentry>
 	<buildpathentry kind="src" path="vendor/symfony/event-dispatcher">
-		<attributes>
-			<attribute name="composer" value="vendor"/>
-		</attributes>
-	</buildpathentry>
-	<buildpathentry kind="src" path="vendor/symfony/filesystem">
 		<attributes>
 			<attribute name="composer" value="vendor"/>
 		</attributes>
@@ -468,11 +373,6 @@
 		</attributes>
 	</buildpathentry>
 	<buildpathentry kind="src" path="vendor/symfony/var-dumper/Resources/functions">
-		<attributes>
-			<attribute name="composer" value="vendor"/>
-		</attributes>
-	</buildpathentry>
-	<buildpathentry kind="src" path="vendor/tcg/voyager/src">
 		<attributes>
 			<attribute name="composer" value="vendor"/>
 		</attributes>

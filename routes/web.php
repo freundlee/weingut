@@ -29,3 +29,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         'as' => 'orders.index',
     ]);
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
