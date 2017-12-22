@@ -170,6 +170,8 @@ return [
 
          Barryvdh\Debugbar\ServiceProvider::class,
          Zizaco\Entrust\EntrustServiceProvider::class,
+         Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
+         Themsaid\Langman\LangmanServiceProvider::class,
         // TCG\Voyager\VoyagerServiceProvider::class,
 
         /*
@@ -232,6 +234,7 @@ return [
 
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
+        'LaravelLocalization' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
 
     ],
 

@@ -3,14 +3,13 @@
 namespace Weingut\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use Weingut\Http\Controllers\Controller;
 use Weingut\Models\Category;
+use Weingut\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class ProductCategoriesController extends Controller
 {
-    
-    
-    /**
+              /**
      * Instantiate a new BrandsController instance.
      */
     public function __construct()
@@ -19,6 +18,7 @@ class ProductCategoriesController extends Controller
         $this->middleware('permission:edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:delete', ['only' => ['show', 'delete']]);
     }
+    
     /**
      * Display a listing of the resource.
      *
@@ -58,12 +58,17 @@ class ProductCategoriesController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required|unique:categories',
+            'description' => 'required',
+        ]);
+
         $category = Category::create([
             'name' => $request->input('name'),
             'description' => $request->input('description'),
         ]);
 
-        return redirect()->route('product-categories.index')->with('success', "The product category <strong>$category->name</strong> has successfully been created.");
+        return redirect()->route('product-categories.index')->with('success', trans('general.form.flash.created',['name' => $category->name]));
     }
 
     /**
@@ -74,14 +79,24 @@ class ProductCategoriesController extends Controller
      */
     public function show($id)
     {
-        $category = Category::find($id);
+        try
+        {
+            $category = Category::findOrFail($id);
 
-        $params = [
-            'title' => 'Edit Product Category',
-            'category' => $category,
-        ];
+            $params = [
+                'title' => 'Edit Product Category',
+                'category' => $category,
+            ];
 
-        return view('admin.categories.categories_delete')->with($params);
+            return view('admin.categories.categories_delete')->with($params);
+        }
+        catch (ModelNotFoundException $ex) 
+        {
+            if ($ex instanceof ModelNotFoundException)
+            {
+                return response()->view('errors.'.'404');
+            }
+        }
     }
 
     /**
@@ -92,14 +107,24 @@ class ProductCategoriesController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::find($id);
+        try
+        {
+            $category = Category::findOrFail($id);
 
-        $params = [
-            'title' => 'Edit Product Category',
-            'category' => $category,
-        ];
+            $params = [
+                'title' => 'Edit Product Category',
+                'category' => $category,
+            ];
 
-        return view('admin.categories.categories_edit')->with($params);
+            return view('admin.categories.categories_edit')->with($params);
+        }
+        catch (ModelNotFoundException $ex) 
+        {
+            if ($ex instanceof ModelNotFoundException)
+            {
+                return response()->view('errors.'.'404');
+            }
+        }
     }
 
     /**
@@ -111,19 +136,29 @@ class ProductCategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $category = Category::find($id);
+        try
+        {
+            $this->validate($request, [
+                'name' => 'required|unique:categories,name,'.$id,
+                'description' => 'required',
+            ]);
 
-        if (!$category){
-            return redirect()
-                ->route('product-categories.index')
-                ->with('warning', 'The category you requested for has not been found.');
+            $category = Category::findOrFail($id);
+
+            $category->name = $request->input('name');
+            $category->description = $request->input('description');
+
+            $category->save();
+
+            return redirect()->route('product-categories.index')->with('success', trans('general.form.flash.updated',['name' => $category->name]));
         }
-
-        $category->description = $request->input('description');
-
-        $category->save();
-
-        return redirect()->route('product-categories.index')->with('success', "The product category <strong>Category</strong> has successfully been updated.");
+        catch (ModelNotFoundException $ex) 
+        {
+            if ($ex instanceof ModelNotFoundException)
+            {
+                return response()->view('errors.'.'404');
+            }
+        }
     }
 
     /**
@@ -134,16 +169,20 @@ class ProductCategoriesController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::find($id);
+        try
+        {
+            $category = Category::findOrFail($id);
 
-        if (!$category){
-            return redirect()
-                ->route('product-categories.index')
-                ->with('warning', 'The category you requested for has not been found.');
+            $category->delete();
+
+            return redirect()->route('product-categories.index')->with('success', trans('general.form.flash.deleted',['name' => $brand->name]));
         }
-
-        $category->delete();
-
-        return redirect()->route('product-categories.index')->with('success', "The product category <strong>Category</strong> has successfully been archived.");
+        catch (ModelNotFoundException $ex) 
+        {
+            if ($ex instanceof ModelNotFoundException)
+            {
+                return response()->view('errors.'.'404');
+            }
+        }
     }
 }

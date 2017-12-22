@@ -38,7 +38,7 @@
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="#" class="site_title"><i class="fa fa-paw"></i> <span>Larashop Admin!</span></a>
+                        <a href="#" class="site_title"><i class="fa fa-paw"></i> <span>@lang('general.app.name')</span></a>
                     </div>
 
                     <div class="clearfix"></div>
@@ -46,11 +46,11 @@
                     <!-- menu profile quick info -->
                     <div class="profile">
                         <div class="profile_pic">
-                            <img src="{{asset('admin/images/img.jpg')}}" alt="..." class="img-circle profile_img">
+                            <img src="{{Auth::user()->getAvatarUrl()}}" alt="..." class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
-                            <span>Welcome,</span>
-                            <h2>Rodrick</h2>
+                            <span>@lang('general.app.welcome'),</span>
+                            <h2>{{Auth::user()->name}}</h2>
                         </div>
                     </div>
                     <!-- /menu profile quick info -->
@@ -60,19 +60,21 @@
                     <!-- sidebar menu -->
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                         <div class="menu_section">
-                            <h3>General</h3>
+                            <h3>@lang('general.app.general')</h3>
                             <ul class="nav side-menu">
-                                <li><a hef="#"><i class="fa fa-home"></i> Home </a></li>
-                                <li><a><i class="fa fa-edit"></i> Products <span class="fa fa-chevron-down"></span></a>
+                                <li><a hef="#"><i class="fa fa-home"></i> @lang('general.nav.home') </a></li>
+                                <li><a><i class="fa fa-edit"></i> @lang('general.nav.products') <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="{{route('brands.index')}}">Brands list</a></li>
-                                        <li><a href="{{route('product-categories.index')}}">Categories</a></li>
-                                        <li><a href="{{route('products.index')}}">Products list</a></li>
+                                        <li><a href="{{route('brands.index')}}">@lang('general.nav.brands_list')</a></li>
+                                        <li><a href="{{route('product-categories.index')}}">@lang('general.nav.categories_list')</a></li>
+                                        <li><a href="{{route('products.index')}}">@lang('general.nav.products_list')</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="{{route('customers.index')}}"><i class="fa fa-user"></i> Customers </a></li>
-                                <li><a href="{{route('orders.index')}}"><i class="fa fa-shopping-cart"></i> Orders </a></li>
-                                <li><a href="{{route('users.index')}}"><i class="fa fa-users"></i> Users </a></li>
+                                <li><a href="{{route('customers.index')}}"><i class="fa fa-user"></i> @lang('general.nav.customers') </a></li>
+                                <li><a href="{{route('orders.index')}}"><i class="fa fa-shopping-cart"></i> @lang('general.nav.orders') </a></li>
+                                @permission('users')
+                                <li><a href="{{route('users.index')}}"><i class="fa fa-users"></i> @lang('general.nav.users') </a></li>
+                                @endpermission
                             </ul>
                         </div>
                     </div>
@@ -108,150 +110,161 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="{{asset('admin/images/img.jpg')}}" alt="">Rodrick K
+                                    <img src="{{Auth::user()->getAvatarUrl()}}" alt="">{{Auth::user()->name}}
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                    <li><a href="#"> Profile</a></li>
-                                    <li><a href="{{ url('/admin/logout') }}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
-                                </ul>
-                            </li>
+                                    <li>
+                                        <a href="{{route('logout')}}"
+                                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                        <i class="fa fa-sign-out pull-right"></i> @lang('general.logout.logout')
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+
+                                </li>
+
+                            </ul>
+                        </li>
 
 
-                        </ul>
-                    </nav>
-                </div>
+                    </ul>
+                </nav>
             </div>
-            <!-- /top navigation -->
-
-            <!-- page content -->
-            <div class="right_col" role="main">
-                @include('templates.admin.partials.alerts')
-                @yield('content')
-            </div>
-            <!-- /page content -->
-
-            <!-- footer content -->
-            <footer>
-                <div class="pull-right">
-                    Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-                </div>
-                <div class="clearfix"></div>
-            </footer>
-            <!-- /footer content -->
         </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+            @include('templates.admin.partials.alerts')
+            @yield('content')
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+            <div class="pull-right">
+                Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+            </div>
+            <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
     </div>
+</div>
 
-    <!-- jQuery -->
-    <script src="{{asset('admin/js/jquery.min.js')}}"></script>
-    <!-- Bootstrap -->
-    <script src="{{asset('admin/js/bootstrap.min.js')}}"></script>
-    <!-- FastClick -->
-    <script src="{{asset('admin/js/fastclick.js')}}"></script>
-    <!-- NProgress -->
-    <script src="{{asset('admin/js/nprogress.js')}}"></script>
-    <!-- iCheck -->
-    <script src="{{asset('admin/js/icheck.min.js')}}"></script>
-    <!-- Datatables -->
-    <script src="{{asset('admin/js/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('admin/js/dataTables.bootstrap.min.js')}}"></script>
-    <script src="{{asset('admin/js/dataTables.buttons.min.js')}}"></script>
-    <script src="{{asset('admin/js/buttons.bootstrap.min.js')}}"></script>
-    <script src="{{asset('admin/js/buttons.flash.min.js')}}"></script>
-    <script src="{{asset('admin/js/buttons.html5.min.js')}}"></script>
-    <script src="{{asset('admin/js/buttons.print.min.js')}}"></script>
-    <script src="{{asset('admin/js/dataTables.fixedHeader.min.js')}}"></script>
-    <script src="{{asset('admin/js/dataTables.keyTable.min.js')}}"></script>
-    <script src="{{asset('admin/js/dataTables.responsive.min.js')}}"></script>
-    <script src="{{asset('admin/js/responsive.bootstrap.js')}}"></script>
-    <script src="{{asset('admin/js/datatables.scroller.min.js')}}"></script>
-    <script src="{{asset('admin/js/jszip.min.js')}}"></script>
-    <script src="{{asset('admin/js/pdfmake.min.js')}}"></script>
-    <script src="{{asset('admin/js/vfs_fonts.js')}}"></script>
+<!-- jQuery -->
+<script src="{{asset('admin/js/jquery.min.js')}}"></script>
+<!-- Bootstrap -->
+<script src="{{asset('admin/js/bootstrap.min.js')}}"></script>
+<!-- FastClick -->
+<script src="{{asset('admin/js/fastclick.js')}}"></script>
+<!-- NProgress -->
+<script src="{{asset('admin/js/nprogress.js')}}"></script>
+<!-- iCheck -->
+<script src="{{asset('admin/js/icheck.min.js')}}"></script>
+<!-- Datatables -->
+<script src="{{asset('admin/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('admin/js/dataTables.bootstrap.min.js')}}"></script>
+<script src="{{asset('admin/js/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('admin/js/buttons.bootstrap.min.js')}}"></script>
+<script src="{{asset('admin/js/buttons.flash.min.js')}}"></script>
+<script src="{{asset('admin/js/buttons.html5.min.js')}}"></script>
+<script src="{{asset('admin/js/buttons.print.min.js')}}"></script>
+<script src="{{asset('admin/js/dataTables.fixedHeader.min.js')}}"></script>
+<script src="{{asset('admin/js/dataTables.keyTable.min.js')}}"></script>
+<script src="{{asset('admin/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{asset('admin/js/responsive.bootstrap.js')}}"></script>
+<script src="{{asset('admin/js/datatables.scroller.min.js')}}"></script>
+<script src="{{asset('admin/js/jszip.min.js')}}"></script>
+<script src="{{asset('admin/js/pdfmake.min.js')}}"></script>
+<script src="{{asset('admin/js/vfs_fonts.js')}}"></script>
 
-    <!-- Custom Theme Scripts -->
-    <script src="{{asset('admin/js/custom.min.js')}}"></script>
+<!-- Custom Theme Scripts -->
+<script src="{{asset('admin/js/custom.min.js')}}"></script>
 
-    <!-- Datatables -->
-    <script>
-        $(document).ready(function() {
-            var handleDataTableButtons = function() {
-                if ($("#datatable-buttons").length) {
-                    $("#datatable-buttons").DataTable({
-                        dom: "Bfrtip",
-                        buttons: [
-                        {
-                            extend: "copy",
-                            className: "btn-sm"
-                        },
-                        {
-                            extend: "csv",
-                            className: "btn-sm"
-                        },
-                        {
-                            extend: "excel",
-                            className: "btn-sm"
-                        },
-                        {
-                            extend: "pdfHtml5",
-                            className: "btn-sm"
-                        },
-                        {
-                            extend: "print",
-                            className: "btn-sm"
-                        },
-                        ],
-                        responsive: true
-                    });
+<!-- Datatables -->
+<script>
+    $(document).ready(function() {
+        var handleDataTableButtons = function() {
+            if ($("#datatable-buttons").length) {
+                $("#datatable-buttons").DataTable({
+                    dom: "Bfrtip",
+                    buttons: [
+                    {
+                        extend: "copy",
+                        className: "btn-sm"
+                    },
+                    {
+                        extend: "csv",
+                        className: "btn-sm"
+                    },
+                    {
+                        extend: "excel",
+                        className: "btn-sm"
+                    },
+                    {
+                        extend: "pdfHtml5",
+                        className: "btn-sm"
+                    },
+                    {
+                        extend: "print",
+                        className: "btn-sm"
+                    },
+                    ],
+                    responsive: true
+                });
+            }
+        };
+
+        TableManageButtons = function() {
+            "use strict";
+            return {
+                init: function() {
+                    handleDataTableButtons();
                 }
             };
+        }();
 
-            TableManageButtons = function() {
-                "use strict";
-                return {
-                    init: function() {
-                        handleDataTableButtons();
-                    }
-                };
-            }();
+        $('#datatable').dataTable();
 
-            $('#datatable').dataTable();
-
-            $('#datatable-keytable').DataTable({
-                keys: true
-            });
-
-            $('#datatable-responsive').DataTable();
-
-            $('#datatable-scroller').DataTable({
-                ajax: "js/datatables/json/scroller-demo.json",
-                deferRender: true,
-                scrollY: 380,
-                scrollCollapse: true,
-                scroller: true
-            });
-
-            $('#datatable-fixed-header').DataTable({
-                fixedHeader: true
-            });
-
-            var $datatable = $('#datatable-checkbox');
-
-            $datatable.dataTable({
-                'order': [[ 1, 'asc' ]],
-                'columnDefs': [
-                { orderable: false, targets: [0] }
-                ]
-            });
-            $datatable.on('draw.dt', function() {
-                $('input').iCheck({
-                    checkboxClass: 'icheckbox_flat-green'
-                });
-            });
-
-            TableManageButtons.init();
+        $('#datatable-keytable').DataTable({
+            keys: true
         });
-    </script>
-    <!-- /Datatables -->
+
+        $('#datatable-responsive').DataTable();
+
+        $('#datatable-scroller').DataTable({
+            ajax: "js/datatables/json/scroller-demo.json",
+            deferRender: true,
+            scrollY: 380,
+            scrollCollapse: true,
+            scroller: true
+        });
+
+        $('#datatable-fixed-header').DataTable({
+            fixedHeader: true
+        });
+
+        var $datatable = $('#datatable-checkbox');
+
+        $datatable.dataTable({
+            'order': [[ 1, 'asc' ]],
+            'columnDefs': [
+            { orderable: false, targets: [0] }
+            ]
+        });
+        $datatable.on('draw.dt', function() {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_flat-green'
+            });
+        });
+
+        TableManageButtons.init();
+    });
+</script>
+<!-- /Datatables -->
 </body>
 </html>

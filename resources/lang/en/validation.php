@@ -2,27 +2,14 @@
 
 return [
 
-    /*
-    |--------------------------------------------------------------------------
-    | Validation Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines contain the default error messages used by
-    | the validator class. Some of these rules have multiple versions such
-    | as the size rules. Feel free to tweak each of these messages here.
-    |
-    */
-
     'accepted'             => 'The :attribute must be accepted.',
     'active_url'           => 'The :attribute is not a valid URL.',
     'after'                => 'The :attribute must be a date after :date.',
-    'after_or_equal'       => 'The :attribute must be a date after or equal to :date.',
     'alpha'                => 'The :attribute may only contain letters.',
     'alpha_dash'           => 'The :attribute may only contain letters, numbers, and dashes.',
     'alpha_num'            => 'The :attribute may only contain letters and numbers.',
     'array'                => 'The :attribute must be an array.',
     'before'               => 'The :attribute must be a date before :date.',
-    'before_or_equal'      => 'The :attribute must be a date before or equal to :date.',
     'between'              => [
         'numeric' => 'The :attribute must be between :min and :max.',
         'file'    => 'The :attribute must be between :min and :max kilobytes.',
@@ -41,14 +28,12 @@ return [
     'email'                => 'The :attribute must be a valid email address.',
     'exists'               => 'The selected :attribute is invalid.',
     'file'                 => 'The :attribute must be a file.',
-    'filled'               => 'The :attribute field must have a value.',
+    'filled'               => 'The :attribute field is required.',
     'image'                => 'The :attribute must be an image.',
     'in'                   => 'The selected :attribute is invalid.',
     'in_array'             => 'The :attribute field does not exist in :other.',
     'integer'              => 'The :attribute must be an integer.',
     'ip'                   => 'The :attribute must be a valid IP address.',
-    'ipv4'                 => 'The :attribute must be a valid IPv4 address.',
-    'ipv6'                 => 'The :attribute must be a valid IPv6 address.',
     'json'                 => 'The :attribute must be a valid JSON string.',
     'max'                  => [
         'numeric' => 'The :attribute may not be greater than :max.',
@@ -100,8 +85,8 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'attribute-name'    => [
+            'rule-name'     => 'custom-message',
         ],
     ],
 

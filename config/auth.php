@@ -68,6 +68,7 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => Weingut\Models\User::class,
+            'table' => 'users',
         ],
 
         // 'users' => [

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6d3d414d12ed91475d7c78265153da17",
+    "content-hash": "414639bc144050674196c905fd1dfb65",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -814,6 +814,68 @@
                 "debugbar"
             ],
             "time": "2017-09-13T12:19:36+00:00"
+        },
+        {
+            "name": "mcamara/laravel-localization",
+            "version": "1.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mcamara/laravel-localization.git",
+                "reference": "e9842855939ffb4dde9ecbb8839a08fd6d6bc42f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mcamara/laravel-localization/zipball/e9842855939ffb4dde9ecbb8839a08fd6d6bc42f",
+                "reference": "e9842855939ffb4dde9ecbb8839a08fd6d6bc42f",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "~5.2||~5.3||~5.4||~5.5",
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "orchestra/testbench-browser-kit": "~3.4",
+                "phpunit/phpunit": "6.0.*"
+            },
+            "suggest": {
+                "ext-intl": "*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Mcamara\\LaravelLocalization\\LaravelLocalizationServiceProvider"
+                    ],
+                    "aliases": {
+                        "LaravelLocalization": "Mcamara\\LaravelLocalization\\Facades\\LaravelLocalization"
+                    }
+                }
+            },
+            "autoload": {
+                "classmap": [],
+                "psr-0": {
+                    "Mcamara\\LaravelLocalization": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marc Cámara",
+                    "email": "mcamara88@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Easy localization for Laravel",
+            "homepage": "https://github.com/mcamara/laravel-localization",
+            "keywords": [
+                "laravel",
+                "localization",
+                "php"
+            ],
+            "time": "2017-11-11T13:24:49+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -2255,6 +2317,68 @@
                 "dump"
             ],
             "time": "2017-12-11T22:06:16+00:00"
+        },
+        {
+            "name": "themsaid/laravel-langman",
+            "version": "v1.3.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/themsaid/laravel-langman.git",
+                "reference": "27cdaa7eca53a0fe7a54c413285de6112f3166de"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/themsaid/laravel-langman/zipball/27cdaa7eca53a0fe7a54c413285de6112f3166de",
+                "reference": "27cdaa7eca53a0fe7a54c413285de6112f3166de",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "~5.1",
+                "illuminate/filesystem": "~5.1",
+                "illuminate/support": "~5.1",
+                "php": "^5.5.9 || ^7.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9.4",
+                "orchestra/database": "~3.0",
+                "orchestra/testbench": "~3.0",
+                "phpunit/phpunit": "^4.8 || ^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Themsaid\\Langman\\LangmanServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Themsaid\\Langman\\": "src"
+                },
+                "classmap": [
+                    "tests"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mohamed Said",
+                    "email": "theMohamedSaid@gmail.com",
+                    "homepage": "https://themsaid.github.io"
+                }
+            ],
+            "description": "Manage language files with ease.",
+            "homepage": "https://github.com/themsaid/laravel-langman",
+            "keywords": [
+                "laravel",
+                "localization",
+                "multilingual"
+            ],
+            "time": "2017-08-06T15:02:00+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",

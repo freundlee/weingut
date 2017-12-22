@@ -122,6 +122,11 @@
 			<attribute name="composer" value="vendor"/>
 		</attributes>
 	</buildpathentry>
+	<buildpathentry kind="src" path="vendor/mcamara/laravel-localization/src">
+		<attributes>
+			<attribute name="composer" value="vendor"/>
+		</attributes>
+	</buildpathentry>
 	<buildpathentry kind="src" path="vendor/mockery/mockery/library">
 		<attributes>
 			<attribute name="composer" value="vendor"/>
@@ -378,6 +383,16 @@
 		</attributes>
 	</buildpathentry>
 	<buildpathentry kind="src" path="vendor/symfony/var-dumper/Resources/functions">
+		<attributes>
+			<attribute name="composer" value="vendor"/>
+		</attributes>
+	</buildpathentry>
+	<buildpathentry kind="src" path="vendor/themsaid/laravel-langman/src">
+		<attributes>
+			<attribute name="composer" value="vendor"/>
+		</attributes>
+	</buildpathentry>
+	<buildpathentry kind="src" path="vendor/themsaid/laravel-langman/tests">
 		<attributes>
 			<attribute name="composer" value="vendor"/>
 		</attributes>
