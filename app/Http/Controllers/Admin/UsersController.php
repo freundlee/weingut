@@ -8,6 +8,12 @@ use Weingut\Models\User;
 
 class UsersController extends Controller
 {
+
+
+    public function __construct()
+    {
+        $this->middleware('permission:users');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,15 +22,15 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::all();
-        
+
         $params = [
             'title' => 'Users Listing',
             'users' => $users,
         ];
-        
+
         return view('admin.users.users_list')->with($params);
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -35,10 +41,10 @@ class UsersController extends Controller
         $params = [
             'title' => 'Create User',
         ];
-        
+
         return view('admin.users.users_create')->with($params);
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -52,10 +58,10 @@ class UsersController extends Controller
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
         ]);
-        
+
         return redirect()->route('users.index')->with('success', "The user <strong>$user->name</strong> has successfully been created.");
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -65,15 +71,15 @@ class UsersController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        
+
         $params = [
             'title' => 'Delete User',
             'user' => $user,
         ];
-        
+
         return view('admin.users.users_delete')->with($params);
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -83,15 +89,15 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        
+
         $params = [
             'title' => 'Edit User',
             'user' => $user,
         ];
-        
+
         return view('admin.users.users_edit')->with($params);
     }
-    
+
     /**
      * Update the specified resource in storage.
      *
@@ -102,20 +108,20 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find($id);
-        
+
         if (!$user){
             return redirect()
             ->route('users.index')
             ->with('warning', 'The user you requested for has not been found.');
         }
-        
+
         $user->email = $request->input('email');
-        
+
         $user->save();
-        
+
         return redirect()->route('users.index')->with('success', "The user <strong>$user->name</strong> has successfully been updated.");
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *
@@ -125,15 +131,15 @@ class UsersController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
-        
+
         if (!$user){
             return redirect()
             ->route('users.index')
             ->with('warning', 'The user you requested for has not been found.');
         }
-        
+
         $user->delete();
-        
+
         return redirect()->route('users.index')->with('success', "The user <strong>$user->name</strong> has successfully been archived.");
     }
 }

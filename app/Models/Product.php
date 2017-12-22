@@ -27,7 +27,7 @@ class Product extends Model
      */
     public function brand()
     {
-        return $this->belongsTo('Larashop\Models\Brand', 'brand_id');
+        return $this->belongsTo('Weingut\Models\Brand', 'brand_id');
     }
 
     /**
@@ -35,6 +35,7 @@ class Product extends Model
      */
     public function category()
     {
-        return $this->belongsTo('Larashop\Models\Category', 'category_id');
+        return $this->belongsTo('Weingut\Models\Category', 'category_id');
     }
+    
 }

@@ -169,6 +169,7 @@ return [
          */
 
          Barryvdh\Debugbar\ServiceProvider::class,
+         Zizaco\Entrust\EntrustServiceProvider::class,
         // TCG\Voyager\VoyagerServiceProvider::class,
 
         /*
@@ -230,6 +231,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
 
     ],
 

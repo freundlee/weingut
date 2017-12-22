@@ -30,7 +30,7 @@ return [
     ],
 
     'stripe' => [
-        'model' => Weingut\User::class,
+        'model' => Weingut\Models\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],

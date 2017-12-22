@@ -9,6 +9,12 @@ use Weingut\Models\Brand;
 class BrandsController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('permission:create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:delete', ['only' => ['show', 'delete']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,12 +23,12 @@ class BrandsController extends Controller
     public function index()
     {
         $brands = Brand::all();
-        
+
         $params = [
             'title' => 'Brands Listing',
             'brands' => $brands
         ];
-        
+
         return view('admin.brands.brands_list')->with($params);
     }
 
@@ -36,7 +42,7 @@ class BrandsController extends Controller
         $params = [
             'title' => 'Create Brand'
         ];
-        
+
         return view('admin.brands.brands_create')->with($params);
     }
 
@@ -52,7 +58,7 @@ class BrandsController extends Controller
             'name' => $request->input('name'),
             'description' => $request->input('description')
         ]);
-        
+
         return redirect()->route('brands.index')->with('success', "The brand <strong>$brand->name</strong> has successfully been created.");
     }
 
@@ -65,12 +71,12 @@ class BrandsController extends Controller
     public function show($id)
     {
         $brand = Brand::find($id);
-        
+
         $params = [
             'title' => 'Delete Brand',
             'brand' => $brand
         ];
-        
+
         return view('admin.brands.brands_delete')->with($params);
     }
 
@@ -84,12 +90,12 @@ class BrandsController extends Controller
     {
         try {
             $brand = Brand::findOrFail($id);
-            
+
             $params = [
                 'title' => 'Edit Brand',
                 'brand' => $brand
             ];
-            
+
             return view('admin.brands.brands_edit')->with($params);
         } catch (ModelNotFoundException $ex) {
             if ($ex instanceof ModelNotFoundException) {
@@ -108,15 +114,15 @@ class BrandsController extends Controller
     public function update(Request $request, $id)
     {
         $brand = Brand::find($id);
-        
+
         if (! $brand) {
             return redirect()->route('brands.index')->with('warning', 'The brand you requested for has not been found.');
         }
-        
+
         $brand->description = $request->input('description');
-        
+
         $brand->save();
-        
+
         return redirect()->route('brands.index')->with('success', "The brand <strong>$brand->name</strong> has successfully been updated.");
     }
 
@@ -129,13 +135,13 @@ class BrandsController extends Controller
     public function destroy($id)
     {
         $brand = Brand::find($id);
-        
+
         if (! $brand) {
             return redirect()->route('brands.index')->with('warning', 'The brand you requested for has not been found.');
         }
-        
+
         $brand->delete();
-        
+
         return redirect()->route('brands.index')->with('success', "The brand <strong>Brand</strong> has successfully been archived.");
     }
 }
