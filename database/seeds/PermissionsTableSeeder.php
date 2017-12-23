@@ -14,21 +14,25 @@ class PermissionsTableSeeder extends Seeder
     {
         $permissions = [
             [
+                'id' => 1,
                 'name' => 'create',
                 'display_name' => 'Create Record',
                 'description' => 'Allow user to create a new DB record'
             ],
             [
+                'id' => 2,
                 'name' => 'edit',
                 'display_name' => 'Edit Record',
                 'description' => 'Allow user to edit an existing DB record'
             ],
             [
+                'id' => 3,
                 'name' => 'delete',
                 'display_name' => 'Delete Record',
                 'description' => 'Allow user to delete an existing DB record'
             ],
             [
+                'id' => 4,
                 'name' => 'users',
                 'display_name' => 'Manage Users',
                 'description' => 'Allow user to manage system users'
