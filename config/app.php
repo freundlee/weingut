@@ -172,6 +172,7 @@ return [
          Zizaco\Entrust\EntrustServiceProvider::class,
          Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
          Themsaid\Langman\LangmanServiceProvider::class,
+         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         // TCG\Voyager\VoyagerServiceProvider::class,
 
         /*
