@@ -25,6 +25,15 @@ Laravel is accessible, yet powerful, providing tools needed for large, robust ap
 
 Best practice of Laravel. Demo project
 
+Edit .env file to add your db info.
+
+// database initialization:
+$ composer dump-autoload 
+$ ./artisan migrate:fresh
+$ ./artisan db:seed
+
+
+
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
