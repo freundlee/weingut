@@ -2,12 +2,11 @@
 
 namespace Weingut\Models;
 
-use Illuminate\Support\Facades\Config;
-use Illuminate\Notifications\Notifiable;
-use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Weingut\Notifications\LarashopAdminResetPassword as ResetPasswordNotification;
+use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 class User extends Authenticatable
 {
