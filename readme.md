@@ -28,9 +28,9 @@ Best practice of Laravel. Demo project
 Edit .env file to add your db info.
 
 // database initialization:
-$ composer dump-autoload 
-$ ./artisan migrate:fresh
-$ ./artisan db:seed
+- $ composer dump-autoload 
+- $ ./artisan migrate:fresh
+- $ ./artisan db:seed
 
 
 
